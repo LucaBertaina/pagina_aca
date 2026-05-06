@@ -6,19 +6,18 @@ export function HeroSection({ checkpoints }: HeroSectionProps) {
   return (
     <section className="hero">
       <div className="hero-copy">
-        <p className="eyebrow">Accion Catolica</p>
-        <h1>Asuncion de la Virgen</h1>
+        <p className="eyebrow">Asuncion de la Virgen</p>
+        <h1>ACA</h1>
         <p className="lead">
-          Estructura inicial para mostrar un producto, servicio o marca con una estetica
-          limpia, profesional y facil de personalizar.
+          Grupo de Laicos al servicio de la Iglesia, comprometidos con la evangelización y el desarrollo integral de las personas, especialmente los jóvenes, a través de la acción católica.
         </p>
 
         <div className="hero-actions">
           <a className="button button-primary" href="#features">
-            Ver secciones
+            ¿Qué hacemos?
           </a>
           <a className="button button-secondary" href="#contact">
-            Solicitar info
+            Contáctanos
           </a>
         </div>
 
@@ -28,29 +27,6 @@ export function HeroSection({ checkpoints }: HeroSectionProps) {
           ))}
         </ul>
       </div>
-
-      <aside className="preview-card" aria-label="Vista previa de la maqueta">
-        <div className="preview-badge">Preview</div>
-        <div className="preview-window">
-          <div className="preview-line preview-line-large" />
-          <div className="preview-line" />
-          <div className="preview-line" />
-          <div className="preview-stats">
-            <article>
-              <strong>01</strong>
-              <span>Landing</span>
-            </article>
-            <article>
-              <strong>02</strong>
-              <span>CTA</span>
-            </article>
-            <article>
-              <strong>03</strong>
-              <span>Deploy</span>
-            </article>
-          </div>
-        </div>
-      </aside>
     </section>
   )
 }

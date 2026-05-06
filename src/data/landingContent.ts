@@ -2,21 +2,21 @@ import type { Feature } from '../types/landing'
 
 export const features: Feature[] = [
   {
-    title: 'Hero principal',
-    description: 'Una portada simple con mensaje claro para presentar cualquier propuesta.',
+    title: '¿Quiénes somos?',
+    description: 'Breve descripción sobre quiénes somos.',
   },
   {
-    title: 'Secciones reutilizables',
-    description: 'Bloques listos para personalizar con beneficios, metricas y casos de uso.',
+    title: '¿Qué hacemos?',
+    description: 'Resumen de los servicios o actividades principales.',
   },
   {
-    title: 'Preparado para publicar',
-    description: 'Base ligera en React + Vite para desplegar en cualquier hosting estatico.',
+    title: 'Areas de trabajo',
+    description: 'Como nos dividimos por edades.',
   },
 ]
 
 export const checkpoints: string[] = [
-  'Responsive',
-  'Facil de adaptar',
-  'Sin dependencias extra',
+  '¿Quiénes somos?',
+  '¿Qué hacemos?',
+  'Contáctanos',
 ]

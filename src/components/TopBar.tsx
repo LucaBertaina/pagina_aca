@@ -2,8 +2,7 @@ export function TopBar() {
   return (
     <header className="topbar">
       <div>
-        <p className="brand">Landing Model</p>
-        <p className="brand-copy">Plantilla generica para maqueta comercial</p>
+        <p className="brand">Accion Catolica Argentina</p>
       </div>
       <a className="topbar-link" href="#contact">
         Contacto
