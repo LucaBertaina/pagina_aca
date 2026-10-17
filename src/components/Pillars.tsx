@@ -1,92 +1,48 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { landingContent } from '../data/landingContent'
+import { SectionHeader } from './ui/SectionHeader'
+import oracionImg from '../assets/oracion.webp'
+import formacionImg from '../assets/formacion.webp'
+import accionImg from '../assets/accion.webp'
+import sacrificioImg from '../assets/sacrificio.webp'
 
-// Import visual assets directly for Vite bundle processing
-import oracionImg from '../assets/oracion.png'
-import formacionImg from '../assets/formacion.png'
-import accionImg from '../assets/accion.png'
-import sacrificioImg from '../assets/sacrificio.png'
-
-const pillarImages = [oracionImg, formacionImg, accionImg, sacrificioImg]
+const images = [oracionImg, formacionImg, accionImg, sacrificioImg]
 
 export function Pillars() {
   const { pillars } = landingContent
-  const [activeIndex, setActiveIndex] = useState(0)
-  const timerRef = useRef<number | null>(null)
-
-  const startAutoRotation = () => {
-    stopAutoRotation()
-    timerRef.current = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % pillars.items.length)
-    }, 5000)
-  }
-
-  const stopAutoRotation = () => {
-    if (timerRef.current) {
-      window.clearInterval(timerRef.current)
-      timerRef.current = null
-    }
-  }
-
-  useEffect(() => {
-    startAutoRotation()
-    return () => stopAutoRotation()
-  }, [])
-
-  const handleDotClick = (index: number) => {
-    setActiveIndex(index)
-    // Restart automatic rotation timer from 0 when manually clicked
-    startAutoRotation()
-  }
+  const [active, setActive] = useState(0)
+  const tracks = pillars.items.map((_, i) => (i === active ? '5fr' : '1fr')).join(' ')
 
   return (
-    <section className="pillars-section" id="pilares">
-      {/* Background Images Overlay Carousel */}
-      <div className="pillars-bg-container">
-        {pillars.items.map((item, index) => (
-          <div
-            key={item.title}
-            className={`pillars-bg-slide ${activeIndex === index ? 'is-active' : ''}`}
-            style={{ backgroundImage: `url(${pillarImages[index]})` }}
-            aria-hidden="true"
-          />
-        ))}
-        {/* Dark mask overlay to make text highly legible */}
-        <div className="pillars-overlay" aria-hidden="true" />
+    <section className="pillars" id="pilares">
+      <div className="wrap">
+        <SectionHeader eyebrow="Lo que nos sostiene" title={pillars.title} tone="light" />
       </div>
 
-      {/* Content wrapper */}
-      <div className="wrap pillars-content">
-        <p className="eyebrow eyebrow--light">{pillars.title}</p>
-
-        {/* Rotative text content */}
-        <div className="pillars-text-slider">
-          {pillars.items.map((item, index) => (
-            <div
-              key={item.title}
-              className={`pillars-text-slide ${activeIndex === index ? 'is-active' : ''}`}
-            >
-              <h2 className="pillars-slide-title">{item.title}</h2>
-              <p className="pillars-slide-desc">{item.description}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Dots indicators */}
-        <div className="pillars-dots" role="tablist" aria-label="Pilares de la Acción Católica">
-          {pillars.items.map((item, index) => (
-            <button
-              key={item.title}
-              className={`pillars-dot ${activeIndex === index ? 'is-active' : ''}`}
-              role="tab"
-              aria-selected={activeIndex === index}
-              aria-label={`Ver pilar ${item.title}`}
-              onClick={() => handleDotClick(index)}
-            >
-              <span className="pillars-dot-line"></span>
-              <span className="pillars-dot-label">{item.title}</span>
-            </button>
-          ))}
+      <div className="wrap">
+        <div className="panels" style={{ '--tracks': tracks } as CSSProperties}>
+          {pillars.items.map((item, i) => {
+            const isActive = active === i
+            return (
+              <article key={item.title} className="panel" data-active={isActive}>
+                <img className="panel__img" src={images[i]} alt="" loading="eager" decoding="async" />
+                <div className="panel__body" id={`pillar-${i}`} inert={!isActive}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+                <button
+                  type="button"
+                  className="panel__tab"
+                  aria-expanded={isActive}
+                  aria-controls={`pillar-${i}`}
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setActive(i)}
+                >
+                  <span>{item.title}</span>
+                </button>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>

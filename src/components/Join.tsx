@@ -1,22 +1,24 @@
+import { Link } from 'react-router'
 import { landingContent } from '../data/landingContent'
+import { SectionHeader } from './ui/SectionHeader'
 
 export function Join() {
   const { join } = landingContent
 
   return (
-    <section className="section section--dark" id="sumate">
+    <section className="section join" id="sumate">
       <div className="wrap">
-        <p className="eyebrow eyebrow--light">{join.eyebrow}</p>
-        <h2 className="section-title section-title--light">{join.title}</h2>
-        <ol className="step-list">
+        <SectionHeader eyebrow={join.eyebrow} title={join.title} tone="light" />
+        <ol className="steps">
           {join.steps.map((step) => (
             <li key={step.num}>
-              <span className="step-list__num">{step.num}</span>
+              <span className="steps__num" aria-hidden="true">{step.num}</span>
               <h3>{step.title}</h3>
               <p>{step.description}</p>
             </li>
           ))}
         </ol>
+        <Link className="btn btn--gold" to="/parroquia#contacto">Escribinos</Link>
       </div>
     </section>
   )

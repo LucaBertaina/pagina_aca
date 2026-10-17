@@ -1,54 +1,40 @@
 import { landingContent } from '../data/landingContent'
 
+const external = { target: '_blank', rel: 'noopener noreferrer' } as const
+
 export function Contact() {
   const { contact } = landingContent
   const { info } = contact
 
+  const channels = [
+    { label: 'Email', value: info.email, href: `mailto:${info.email}` },
+    { label: 'Teléfono', value: info.phone, href: `tel:${info.phoneLink}` },
+    { label: 'Instagram', value: '@pquia.asunciondelavirgen', href: info.instagram, ...external },
+    { label: 'Facebook', value: 'Jóvenes de Asunción', href: info.facebook, ...external },
+  ]
+
   return (
-    <section className="section" id="contacto">
-      <div className="wrap section--split">
-        <div className="section__col">
+    <section className="section contact" id="contacto">
+      <div className="wrap split">
+        <div>
           <p className="eyebrow">{contact.eyebrow}</p>
           <h2 className="section-title">{contact.title}</h2>
           <p>{contact.description}</p>
-          <ul className="contact-list">
-            <li>
-              <strong>Parroquia:</strong> {info.parishName}
-            </li>
-            <li>
-              <strong>Dirección:</strong> {info.address}
-            </li>
-            <li>
-              <strong>Email:</strong>{' '}
-              <a href={`mailto:${info.email}`}>{info.email}</a>
-            </li>
-            <li>
-              <strong>Teléfono:</strong>{' '}
-              <a href={`tel:${info.phoneLink}`}>{info.phone}</a>
-            </li>
-          </ul>
         </div>
-        <div className="section__col">
-          <form
-            className="contact-form"
-            action={`mailto:${info.email}`}
-            method="post"
-            encType="text/plain"
-          >
-            <label htmlFor="name">Nombre</label>
-            <input id="name" name="name" type="text" autoComplete="name" required />
 
-            <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" autoComplete="email" required />
-
-            <label htmlFor="message">Mensaje</label>
-            <textarea id="message" name="message" rows={4} required></textarea>
-
-            <button className="btn btn--wine" type="submit">
-              Enviar mensaje
-            </button>
-          </form>
-        </div>
+        <ul className="channels">
+          {channels.map(({ label, value, ...link }) => (
+            <li key={label}>
+              <a {...link}>
+                <span className="channels__label">{label}</span>
+                <span className="channels__value">{value}</span>
+                <svg className="channels__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

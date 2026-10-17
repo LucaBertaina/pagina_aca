@@ -1,21 +1,21 @@
 import { landingContent } from '../data/landingContent'
+import { SectionHeader } from './ui/SectionHeader'
 
 export function Groups() {
   const { groups } = landingContent
 
   return (
-    <section className="section section--muted" id="grupos">
+    <section className="section groups" id="grupos">
       <div className="wrap">
-        <p className="eyebrow">{groups.eyebrow}</p>
-        <h2 className="section-title">{groups.title}</h2>
-        <div className="card-grid">
+        <SectionHeader eyebrow={groups.eyebrow} title={groups.title} />
+        <ul className="index">
           {groups.items.map((group) => (
-            <article className="card" key={group.name}>
+            <li key={group.name}>
               <h3>{group.name}</h3>
               <p>{group.description}</p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
