@@ -16,7 +16,6 @@ export function Footer() {
             {nav.map(({ label, short, to }) => (
               <Link key={to} to={to}>{short ?? label}</Link>
             ))}
-            <Link to="/parroquia#contacto">Contacto</Link>
           </nav>
           <div className="footer-fine">
             <p>© {new Date().getFullYear()} {parishName}. {brandName}.</p>

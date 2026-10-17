@@ -3,7 +3,7 @@ import { landingContent } from '../data/landingContent'
 import { SectionHeader } from './ui/SectionHeader'
 
 export function Join() {
-  const { join } = landingContent
+  const { join, contact: { info } } = landingContent
 
   return (
     <section className="section join" id="sumate">
@@ -18,7 +18,13 @@ export function Join() {
             </li>
           ))}
         </ol>
-        <Link className="btn btn--gold" to="/parroquia#contacto">Escribinos</Link>
+        <div className="join__cta">
+          <p>¿Dudas o ganas de empezar? Escribinos y te respondemos.</p>
+          <div className="join__actions">
+            <a className="btn btn--gold" href={info.whatsappUrl} target="_blank" rel="noopener noreferrer">Escribinos por WhatsApp</a>
+            <Link className="btn btn--ghost-light" to="/contacto">Otros canales</Link>
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -27,7 +27,10 @@ export interface ContactInfo {
   email: string
   phone: string
   phoneLink: string
+  whatsapp: string
+  whatsappUrl: string
   facebook: string
+  youtube: string
   instagram: string
   mapsUrl: string
 }
@@ -65,8 +68,10 @@ export const landingContent = {
 
   nav: [
     { label: 'Inicio', to: '/', hint: 'Quiénes somos y lo que nos sostiene' },
-    { label: 'Grupos y actividades', short: 'Grupos', to: '/grupos', hint: 'Un grupo para cada edad' },
-    { label: 'Parroquia', to: '/parroquia', hint: 'Dónde estamos, misas y contacto' },
+    { label: 'Grupos', to: '/grupos', hint: 'Un grupo para cada edad' },
+    { label: 'Actividades', to: '/actividades', hint: 'Qué hacemos durante el año' },
+    { label: 'Parroquia', to: '/parroquia', hint: 'Dónde estamos y horarios de misa' },
+    { label: 'Contacto', to: '/contacto', hint: 'WhatsApp, teléfono y redes' },
   ] as NavItem[],
 
   invite: {
@@ -124,8 +129,9 @@ export const landingContent = {
   },
   
   groups: {
-    eyebrow: 'Nuestros grupos',
-    title: 'Un lugar para cada edad',
+    eyebrow: 'Para cada edad',
+    title: 'Nuestros grupos',
+    description: 'Un lugar para cada edad. Encontrá el tuyo y conocé cómo empezar.',
     items: [
       { name: 'Niños', description: 'Primeros pasos en la fe a través del juego, la catequesis y el encuentro con otros chicos.' },
       { name: 'Jóvenes', description: 'Espacio para pensar la fe, la amistad y el proyecto de vida, con formación, servicio y comunidad.' },
@@ -136,8 +142,8 @@ export const landingContent = {
   
   activities: {
     eyebrow: 'Qué hacemos',
-    title: 'La fe puesta en acción',
-    description: 'Cada grupo arma su propio calendario, pero la mayoría de nuestras actividades giran en torno a estos ejes:',
+    title: 'Actividades',
+    description: 'Cada grupo arma su propio calendario, pero la mayoría de nuestras actividades giran en torno a estos ejes.',
     list: [
       'Catequesis y formación en la fe',
       'Encuentros semanales por grupo',
@@ -180,7 +186,10 @@ export const landingContent = {
       email: 'pquiasuncion@gmail.com',
       phone: '(0261) 431-3504',
       phoneLink: '+542614313504',
+      whatsapp: '261 271-8793',
+      whatsappUrl: 'https://wa.me/5492612718793',
       facebook: 'https://www.facebook.com/jovenesdeasuncion/',
+      youtube: 'https://www.youtube.com/@parroquiaasunciondelavirge6301/videos',
       instagram: 'https://www.instagram.com/pquia.asunciondelavirgen/',
       mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Parroquia+Asunci%C3%B3n+de+la+Virgen+Dorrego+1592+Guaymall%C3%A9n',
     } as ContactInfo,

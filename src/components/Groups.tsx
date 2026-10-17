@@ -1,5 +1,4 @@
 import { landingContent } from '../data/landingContent'
-import { SectionHeader } from './ui/SectionHeader'
 
 export function Groups() {
   const { groups } = landingContent
@@ -7,7 +6,6 @@ export function Groups() {
   return (
     <section className="section groups" id="grupos">
       <div className="wrap">
-        <SectionHeader eyebrow={groups.eyebrow} title={groups.title} />
         <ul className="index">
           {groups.items.map((group) => (
             <li key={group.name}>
