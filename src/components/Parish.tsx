@@ -14,7 +14,7 @@ export function Parish() {
         <div>
           <ParishLogo className="parish__logo" />
           <p className="eyebrow">Nuestra casa</p>
-          <h2 className="section-title">{parishName}</h2>
+          <h1 className="section-title">{parishName}</h1>
           <p className="parish__intro">{parish.intro}</p>
         </div>
 
@@ -29,6 +29,10 @@ export function Parish() {
             >
               {info.address}
             </a>
+            <div className="parish__actions">
+              <a className="btn btn--wine" href={info.mapsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+              <a className="btn btn--outline" href={`tel:${info.phoneLink}`}>Llamar</a>
+            </div>
           </div>
 
           <div>
@@ -39,7 +43,9 @@ export function Parish() {
                   <div key={day}>
                     <dt>{day}</dt>
                     <dd>
-                      {times.join(' · ')}
+                      {times.map((time) => (
+                        <span key={time} className="parish__time">{time}</span>
+                      ))}
                       {note && <small>{note}</small>}
                     </dd>
                   </div>
