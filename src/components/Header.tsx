@@ -6,6 +6,7 @@ import { Emblem } from './ui/Emblem'
 export function Header() {
   const { info } = landingContent.contact
   const [isOpen, setIsOpen] = useState(false)
+  const [atFooter, setAtFooter] = useState(false)
   const close = () => setIsOpen(false)
 
   useEffect(() => {
@@ -19,6 +20,30 @@ export function Header() {
     }
   }, [isOpen])
 
+  useEffect(() => {
+    const root = document.documentElement
+    const update = () => {
+      const max = root.scrollHeight - root.clientHeight
+      root.style.setProperty('--progress', String(max > 0 ? Math.min(1, root.scrollTop / max) : 0))
+    }
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  // El botón flotante se oculta cuando el footer entra en pantalla para no tapar sus enlaces
+  useEffect(() => {
+    const footer = document.querySelector('.site-footer')
+    if (!footer) return
+    const io = new IntersectionObserver(([entry]) => setAtFooter(entry.isIntersecting))
+    io.observe(footer)
+    return () => io.disconnect()
+  }, [])
+
   return (
     <header className="site-header">
       <div className="wrap site-header__inner">
@@ -31,6 +56,7 @@ export function Header() {
           type="button"
           className="nav-toggle"
           aria-expanded={isOpen}
+          data-hidden={atFooter && !isOpen}
           aria-controls="primaryNav"
           aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
           onClick={() => setIsOpen(!isOpen)}
@@ -60,12 +86,12 @@ export function Header() {
             </NavLink>
           ))}
           <Link
-            to="/parroquia#contacto"
+            to="/grupos#sumate"
             className="primary-nav__cta"
             onClick={close}
             style={{ '--i': landingContent.nav.length } as CSSProperties}
           >
-            Contacto
+            Sumate
           </Link>
           <div className="primary-nav__foot" style={{ '--i': landingContent.nav.length + 1 } as CSSProperties}>
             <a href={`tel:${info.phoneLink}`}>{info.phone}</a>
