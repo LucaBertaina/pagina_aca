@@ -15,7 +15,6 @@ export function About() {
               <span className="drop-cap">{about.dropCapLetter}</span>
               {about.dropCapText}
             </p>
-            <p>{about.paragraph2}</p>
           </div>
           <dl className="about__facts">
             {about.facts.map((fact) => (

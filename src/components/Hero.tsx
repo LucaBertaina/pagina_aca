@@ -18,7 +18,7 @@ export function Hero() {
             {after}
           </h1>
           <p className="hero__subtitle">
-            {hero.subtitle} <strong>{hero.strongText}</strong>
+            {hero.subtitle}
           </p>
           <div className="hero__actions">
             <Link className="btn btn--wine" to="/grupos#sumate">Sumate</Link>

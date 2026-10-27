@@ -5,12 +5,12 @@ import { usePageTitle } from '../hooks/usePageTitle'
 import { landingContent } from '../data/landingContent'
 
 export function GroupsPage() {
-  const { eyebrow, title, description } = landingContent.groups
+  const { eyebrow, title } = landingContent.groups
   usePageTitle(title)
 
   return (
     <>
-      <PageHeader eyebrow={eyebrow} title={title} description={description} />
+      <PageHeader eyebrow={eyebrow} title={title} />
       <Groups />
       <Join />
     </>

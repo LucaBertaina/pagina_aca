@@ -1,7 +1,7 @@
 type Props = {
   eyebrow: string
   title: string
-  description: string
+  description?: string
 }
 
 export function PageHeader({ eyebrow, title, description }: Props) {
@@ -10,7 +10,7 @@ export function PageHeader({ eyebrow, title, description }: Props) {
       <div className="wrap">
         <p className="eyebrow">{eyebrow}</p>
         <h1 className="page-header__title">{title}</h1>
-        <p className="page-header__desc">{description}</p>
+        {description && <p className="page-header__desc">{description}</p>}
       </div>
     </header>
   )
