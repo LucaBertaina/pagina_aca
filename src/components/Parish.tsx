@@ -1,5 +1,6 @@
 import { landingContent, type ParishData } from '../data/landingContent'
 import { ParishLogo } from './ui/ParishLogo'
+import youthImg from '../assets/parroquia-jovenes.webp'
 import parishJson from '../data/parish.json'
 
 const parish = parishJson as ParishData
@@ -59,6 +60,22 @@ export function Parish() {
               </p>
             )}
           </div>
+        </div>
+      </div>
+
+      <div className="wrap parish__youth">
+        <img
+          className="parish__youth-photo"
+          src={youthImg}
+          width={2000}
+          height={1335}
+          alt="Jóvenes de la parroquia Asunción de la Virgen posando con sus banderas"
+          loading="lazy"
+        />
+        <div>
+          <p className="eyebrow">Nuestros jóvenes</p>
+          <h2 className="parish__youth-title">Una parroquia con juventud</h2>
+          <p>Los jóvenes rezan, se forman y sirven juntos. Hay un lugar para vos.</p>
         </div>
       </div>
     </section>

@@ -369,24 +369,43 @@
 
 /* ---------- Invite ---------- */
 
+.invite {
+  position: relative;
+  overflow: hidden;
+  background: var(--wine);
+  color: var(--paper);
+}
+
+.invite__emblem {
+  position: absolute;
+  top: 50%;
+  right: -3rem;
+  width: clamp(16rem, 42vw, 34rem);
+  color: var(--gold-bright);
+  opacity: 0.16;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 .invite__inner {
+  position: relative;
   display: grid;
   gap: var(--space-8);
-  align-items: end;
+  justify-items: start;
 }
 
 .invite__title {
+  max-width: 12ch;
+  color: var(--paper);
   font-size: var(--text-statement);
   font-weight: 500;
   line-height: 0.95;
   letter-spacing: -0.035em;
 }
 
-@media (min-width: 900px) {
-  .invite__inner {
-    grid-template-columns: 7fr 5fr;
-    gap: clamp(3rem, 8vw, 7rem);
-  }
+.invite__title em {
+  font-weight: 400;
+  color: var(--gold-light);
 }
 
 /* ---------- Hero ---------- */
@@ -1098,22 +1117,33 @@
   color: var(--on-dark-soft);
 }
 
-.steps {
+.join__layout {
   display: grid;
-  gap: var(--space-12);
-  margin-bottom: var(--space-12);
+  gap: var(--space-8);
+}
+
+/* Arco de vitral, como en el hero; el recorte alto acerca a las personas */
+.join__photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 85%;
+  border-radius: 999px 999px var(--radius) var(--radius);
 }
 
 .steps li {
-  padding-top: var(--space-4);
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-6);
   border-top: 1px solid var(--line-light);
 }
 
 .steps__num {
-  display: block;
-  margin-bottom: var(--space-4);
   font-family: var(--font-display);
-  font-size: clamp(5rem, 14vw, 9rem);
+  font-size: 3.5rem;
   line-height: 0.9;
   letter-spacing: -0.04em;
   color: transparent;
@@ -1133,17 +1163,32 @@
 }
 
 @media (min-width: 900px) {
-  .steps {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-8);
+  .join__layout {
+    grid-template-columns: 7fr 5fr;
+    grid-template-areas:
+      "header photo"
+      "steps photo"
+      "cta photo";
+    column-gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
   }
 
-  .steps li:nth-child(2) {
-    margin-top: 3rem;
+  .join__layout > .section-header {
+    grid-area: header;
   }
 
-  .steps li:nth-child(3) {
-    margin-top: 6rem;
+  .join__layout > .steps {
+    grid-area: steps;
+  }
+
+  .join__layout > .join__cta {
+    grid-area: cta;
+  }
+
+  .join__photo {
+    grid-area: photo;
+    height: 100%;
+    aspect-ratio: auto;
   }
 }
 
@@ -1172,18 +1217,6 @@
   .join__actions {
     grid-auto-flow: column;
     justify-content: start;
-  }
-}
-
-@media (min-width: 900px) {
-  .join__cta {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: var(--space-12);
-  }
-
-  .join__cta p {
-    max-width: 24ch;
   }
 }
 
@@ -1374,5 +1407,98 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ---------- Fotos ---------- */
+
+/* Filas con foto: la imagen manda, el texto la acompaña */
+.index__media {
+  overflow: hidden;
+  margin-top: var(--space-4);
+  border-radius: var(--radius);
+}
+
+.index__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .index__media img {
+    transition: transform var(--dur-slow) var(--ease);
+  }
+}
+
+@media (hover: hover) {
+  .index li:hover .index__media img {
+    transform: scale(1.04);
+  }
+}
+
+.parish__youth {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  margin-top: var(--space-section);
+}
+
+.parish__youth-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: 50% 75%;
+  border-radius: var(--radius);
+}
+
+.parish__youth-title {
+  margin-bottom: var(--space-6);
+  font-size: clamp(2.2rem, 5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.parish__youth p:not(.eyebrow) {
+  max-width: 44ch;
+}
+
+@media (min-width: 900px) {
+  .index__row--photo {
+    grid-template-columns: 5fr 6fr;
+    grid-template-areas: "title media" "text media";
+    align-content: center;
+    gap: var(--space-4) clamp(2rem, 6vw, 5rem);
+    padding-block: var(--space-12);
+  }
+
+  .index__row--photo h3 {
+    grid-area: title;
+    align-self: end;
+  }
+
+  .index__row--photo p {
+    grid-area: text;
+    align-self: start;
+  }
+
+  .index__row--photo .index__media {
+    grid-area: media;
+    margin-top: 0;
+  }
+
+  /* Alterna el lado para dar ritmo editorial */
+  .index__row--photo:nth-child(even) {
+    grid-template-columns: 6fr 5fr;
+    grid-template-areas: "media title" "media text";
+  }
+
+  .parish__youth {
+    grid-template-columns: 7fr 5fr;
+    gap: clamp(3rem, 8vw, 7rem);
   }
 }
