@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+# One run per branch: a new push cancels the previous one
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      # Reads the pnpm version from the packageManager field in package.json
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      # tsc -b + vite build: fails on type errors and on broken imports or assets
+      - name: Typecheck and build
+        run: pnpm build
+
+      # Report only: known advisories in runtime deps should not block a deploy by themselves
+      - name: Audit production dependencies
+        run: pnpm audit --prod --audit-level high
+        continue-on-error: true

@@ -1,0 +1,25 @@
+{
+  "intro": "Desprendida de Nuestra Señora Madre de los Migrantes el 9 de septiembre de 1964, la parroquia Asunción de la Virgen es la casa de nuestra comunidad en Dorrego, Guaymallén.",
+  "masses": [
+    {
+      "day": "Martes y miércoles",
+      "times": [
+        "19:30 hs"
+      ]
+    },
+    {
+      "day": "Jueves",
+      "times": [
+        "8:00 hs"
+      ]
+    },
+    {
+      "day": "Domingo",
+      "times": [
+        "9:30 hs",
+        "11:00 hs",
+        "20:00 hs"
+      ]
+    }
+  ]
+}
