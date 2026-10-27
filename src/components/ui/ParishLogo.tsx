@@ -1,4 +1,3 @@
-// Drop the parish logo at src/assets/parroquia-logo.svg (or .png/.webp). Renders nothing until it exists.
 const found = import.meta.glob('../../assets/parroquia-logo.*', {
   eager: true,
   query: '?url',

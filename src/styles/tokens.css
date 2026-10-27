@@ -1,5 +1,4 @@
 :root {
-  /* Marca Acción Católica */
   --paper: #f2ebda;
   --paper-dim: #e6ddc7;
   --ivory: #faf6ea;
@@ -13,19 +12,16 @@
   --wine: #7a1f32;
   --wine-bright: #932339;
 
-  /* Alfas derivados */
   --line: color-mix(in srgb, var(--navy) 16%, transparent);
   --line-light: color-mix(in srgb, var(--paper) 22%, transparent);
   --on-dark-soft: color-mix(in srgb, var(--paper) 78%, transparent);
 
-  /* Tipografía */
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --text-display: clamp(3rem, 12vw, 8.5rem);
   --text-statement: clamp(2.8rem, 9vw, 6rem);
   --text-h2: clamp(2.3rem, 6.5vw, 4.25rem);
 
-  /* Espaciado (múltiplos de 4px) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;

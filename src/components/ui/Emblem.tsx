@@ -1,4 +1,3 @@
-/** Hidden sprite, mounted once at the app root. Render the emblem with <Emblem />. */
 export function EmblemSprite() {
   return (
     <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true" focusable="false">

@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router'
+import { Route, Routes } from 'react-router'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { ScrollManager } from './components/ScrollManager'
@@ -7,6 +7,7 @@ import { ContactPage } from './pages/ContactPage'
 import { ActivitiesPage } from './pages/ActivitiesPage'
 import { GroupsPage } from './pages/GroupsPage'
 import { Home } from './pages/Home'
+import { NotFoundPage } from './pages/NotFoundPage'
 import { ParishPage } from './pages/ParishPage'
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           <Route path="/actividades" element={<ActivitiesPage />} />
           <Route path="/parroquia" element={<ParishPage />} />
           <Route path="/contacto" element={<ContactPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
