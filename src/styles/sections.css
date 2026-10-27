@@ -1394,31 +1394,62 @@
 }
 
 .parish__youth {
-  display: grid;
-  gap: var(--space-8);
-  align-items: center;
+  --media-h: clamp(18rem, 36vw, 28rem);
+  position: relative;
   margin-top: var(--space-section);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: var(--ivory);
+}
+
+.parish__youth-media {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--media-h);
+  overflow: hidden;
 }
 
 .parish__youth-photo {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
+  height: 135%;
   object-fit: cover;
-  object-position: 50% 75%;
-  border-radius: var(--radius);
+  object-position: 50% 88%;
+  transition: transform var(--dur-slow) var(--ease);
+}
+
+.parish__youth-body {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  padding: calc(var(--media-h) - 1rem) var(--space-6) var(--space-8);
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--media-h) * 0.5),
+    color-mix(in srgb, var(--ivory) 90%, transparent) calc(var(--media-h) - 2rem),
+    var(--ivory) var(--media-h)
+  );
 }
 
 .parish__youth-title {
-  margin-bottom: var(--space-6);
   font-size: clamp(2.2rem, 5vw, 3.25rem);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.03em;
 }
 
-.parish__youth p:not(.eyebrow) {
+.parish__youth-body > p {
   max-width: 44ch;
+  margin: 0;
+}
+
+@media (hover: hover) {
+  .parish__youth:hover .parish__youth-photo {
+    transform: scale(1.03);
+  }
 }
 
 @media (min-width: 900px) {
@@ -1450,8 +1481,14 @@
     grid-template-areas: "media title" "media text";
   }
 
-  .parish__youth {
-    grid-template-columns: 7fr 5fr;
-    gap: clamp(3rem, 8vw, 7rem);
+  .parish__youth-photo {
+    height: 100%;
+  }
+
+  .parish__youth-body {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding: calc(var(--media-h) - 1rem) var(--space-12) var(--space-12);
   }
 }

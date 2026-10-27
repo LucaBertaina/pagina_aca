@@ -63,20 +63,26 @@ export function Parish() {
         </div>
       </div>
 
-      <div className="wrap parish__youth">
-        <img
-          className="parish__youth-photo"
-          src={youthImg}
-          width={2000}
-          height={1335}
-          alt="Jóvenes de la parroquia Asunción de la Virgen posando con sus banderas"
-          loading="lazy"
-        />
-        <div>
-          <p className="eyebrow">Nuestros jóvenes</p>
-          <h2 className="parish__youth-title">Una parroquia con juventud</h2>
-          <p>Los jóvenes rezan, se forman y sirven juntos. Hay un lugar para vos.</p>
-        </div>
+      <div className="wrap">
+        <article className="parish__youth">
+          <div className="parish__youth-media">
+            <img
+              className="parish__youth-photo"
+              src={youthImg}
+              width={2000}
+              height={1335}
+              alt="Jóvenes de la parroquia Asunción de la Virgen posando con sus banderas"
+              loading="lazy"
+            />
+          </div>
+          <div className="parish__youth-body">
+            <div>
+              <p className="eyebrow">Nuestros jóvenes</p>
+              <h2 className="parish__youth-title">Una parroquia con juventud</h2>
+            </div>
+            <p>Los jóvenes rezan, se forman y sirven juntos. Hay un lugar para vos.</p>
+          </div>
+        </article>
       </div>
     </section>
   )
