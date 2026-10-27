@@ -6,7 +6,6 @@ on:
   push:
     branches: [main, dev]
 
-# One run per branch: a new push cancels the previous one
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
@@ -21,7 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Reads the pnpm version from the packageManager field in package.json
       - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
@@ -35,7 +33,6 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      # tsc -b + vite build: fails on type errors and on broken imports or assets
       - name: Typecheck and build
         run: pnpm build
 

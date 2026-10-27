@@ -1,10 +1,6 @@
-/* ---------- Layout ---------- */
-
 .section {
   padding-block: var(--space-section);
 }
-
-/* ---------- Header ---------- */
 
 .site-header {
   position: sticky;
@@ -24,7 +20,6 @@
   backdrop-filter: blur(14px) saturate(1.4);
 }
 
-/* Progreso de lectura: --progress lo actualiza Header.tsx (funciona en todos los navegadores) */
 .site-header::after {
   content: "";
   position: absolute;
@@ -62,7 +57,6 @@
   flex-shrink: 0;
 }
 
-/* Móvil: botón flotante en la zona del pulgar */
 .nav-toggle {
   position: fixed;
   left: max(var(--space-4), env(safe-area-inset-left));
@@ -121,8 +115,6 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Móvil: menú a pantalla completa sobre azul profundo. Fundido + ítems que entran escalonados;
-   el alto de los ítems sale del alto real de pantalla (svh) para que nunca desborde. */
 .primary-nav {
   position: fixed;
   inset: 0;
@@ -144,7 +136,6 @@
     visibility var(--dur-fast);
 }
 
-/* Sin esto, en pantallas bajas los ítems se comprimen y se pisan en vez de hacer scroll */
 .primary-nav > * {
   flex-shrink: 0;
 }
@@ -154,7 +145,6 @@
   opacity: 1;
 }
 
-/* La barra superior (marca y botón) queda encima del menú: pasa a colores claros */
 .site-header:has(.primary-nav[data-open="true"]) .brand {
   color: var(--paper);
 }
@@ -252,7 +242,6 @@
   text-underline-offset: 3px;
 }
 
-/* Entrada escalonada (solo mientras el menú es un panel) */
 .primary-nav__link,
 .primary-nav__cta,
 .primary-nav__foot {
@@ -339,8 +328,6 @@
   }
 }
 
-/* ---------- Page header ---------- */
-
 .page-header {
   padding-block: clamp(3rem, 8vw, 6rem) var(--space-12);
 }
@@ -366,8 +353,6 @@
   color: var(--ink-soft);
   font-size: 1.15rem;
 }
-
-/* ---------- Invite ---------- */
 
 .invite {
   position: relative;
@@ -407,8 +392,6 @@
   font-weight: 400;
   color: var(--gold-light);
 }
-
-/* ---------- Hero ---------- */
 
 .hero {
   padding-top: clamp(2.5rem, 7vw, 5rem);
@@ -456,7 +439,6 @@
   animation: rise var(--dur-slow) var(--ease) 0.2s both;
 }
 
-/* Arco de vitral: el motivo de la página */
 .hero__arch {
   position: relative;
   display: grid;
@@ -471,7 +453,6 @@
   animation: arch-in 1.1s var(--ease) 0.15s both;
 }
 
-/* Arco interior: marco fino dorado, como vitral */
 .hero__arch::after {
   content: "";
   position: absolute;
@@ -563,8 +544,6 @@
   }
 }
 
-/* ---------- Marquee ---------- */
-
 .marquee {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
@@ -612,8 +591,6 @@
     transform: translateX(-50%);
   }
 }
-
-/* ---------- About ---------- */
 
 .about__quote {
   max-width: 26ch;
@@ -681,8 +658,6 @@
     gap: clamp(3rem, 8vw, 7rem);
   }
 }
-
-/* ---------- Parish ---------- */
 
 .parish .split {
   display: grid;
@@ -787,7 +762,6 @@
   color: var(--navy);
 }
 
-/* Horarios como chips: se leen de un vistazo y envuelven bien en 320px */
 .parish__masses dd {
   display: flex;
   flex-wrap: wrap;
@@ -810,8 +784,6 @@
   display: block;
   color: var(--ink-soft);
 }
-
-/* ---------- Pillars: paneles acordeón ---------- */
 
 .pillars {
   padding-block: var(--space-section);
@@ -915,7 +887,6 @@
   transition: opacity var(--dur-fast) var(--ease);
 }
 
-/* Indicador "+" en paneles cerrados */
 .panel__tab::after {
   content: "";
   width: 1.75rem;
@@ -978,8 +949,6 @@
   }
 }
 
-/* ---------- Groups: índice tipográfico ---------- */
-
 .index li {
   position: relative;
   isolation: isolate;
@@ -993,7 +962,6 @@
   border-bottom: 1px solid var(--line);
 }
 
-/* El fondo del hover sobresale de la columna; la línea en reposo queda alineada con el texto */
 .index li::before {
   content: "";
   position: absolute;
@@ -1059,8 +1027,6 @@
 
 }
 
-/* ---------- Activities: bento ---------- */
-
 .bento {
   display: grid;
   gap: var(--space-3);
@@ -1110,8 +1076,6 @@
   }
 }
 
-/* ---------- Join: pasos desfasados ---------- */
-
 .join {
   background: var(--navy);
   color: var(--on-dark-soft);
@@ -1122,7 +1086,6 @@
   gap: var(--space-8);
 }
 
-/* Arco de vitral, como en el hero; el recorte alto acerca a las personas */
 .join__photo {
   width: 100%;
   height: auto;
@@ -1220,8 +1183,6 @@
   }
 }
 
-/* ---------- Contact ---------- */
-
 .contact {
   padding-top: 0;
 }
@@ -1305,8 +1266,6 @@
 
 }
 
-/* ---------- Footer ---------- */
-
 .site-footer {
   overflow: hidden;
   padding-block: var(--space-12) var(--space-8);
@@ -1380,8 +1339,6 @@
   text-decoration-color: currentColor;
 }
 
-/* ---------- Reveal por scroll (CSS puro, sin JS) ---------- */
-
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .section-header,
@@ -1410,9 +1367,6 @@
   }
 }
 
-/* ---------- Fotos ---------- */
-
-/* Filas con foto: la imagen manda, el texto la acompaña */
 .index__media {
   overflow: hidden;
   margin-top: var(--space-4);
@@ -1491,7 +1445,6 @@
     margin-top: 0;
   }
 
-  /* Alterna el lado para dar ritmo editorial */
   .index__row--photo:nth-child(even) {
     grid-template-columns: 6fr 5fr;
     grid-template-areas: "media title" "media text";

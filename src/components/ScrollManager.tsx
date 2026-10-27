@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router'
 
-/** Scroll to the hash target on navigation, or to the top when there is none. */
 export function ScrollManager() {
   const { pathname, hash } = useLocation()
 
