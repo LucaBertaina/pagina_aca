@@ -1,0 +1,44 @@
+:root {
+  /* Marca Acción Católica */
+  --paper: #f2ebda;
+  --paper-dim: #e6ddc7;
+  --ivory: #faf6ea;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --navy: #0b4d9c;
+  --navy-deep: #083770;
+  --gold: #b8862e;
+  --gold-bright: #d4a445;
+  --gold-light: #e8c26e; /* texto pequeño sobre azul: 4.84:1 sobre navy */
+  --wine: #7a1f32;
+  --wine-bright: #932339;
+
+  /* Alfas derivados */
+  --line: color-mix(in srgb, var(--navy) 16%, transparent);
+  --line-light: color-mix(in srgb, var(--paper) 22%, transparent);
+  --on-dark-soft: color-mix(in srgb, var(--paper) 78%, transparent);
+
+  /* Tipografía */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --text-display: clamp(3rem, 12vw, 8.5rem);
+  --text-statement: clamp(2.8rem, 9vw, 6rem);
+  --text-h2: clamp(2.3rem, 6.5vw, 4.25rem);
+
+  /* Espaciado (múltiplos de 4px) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-section: clamp(4rem, 10vw, 7rem);
+
+  --wrap-width: 1120px;
+  --radius: 6px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.2s;
+  --dur: 0.3s;
+  --dur-slow: 0.8s;
+}

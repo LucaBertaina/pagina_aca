@@ -1,26 +1,35 @@
-import { landingContent } from '../data/landingContent'
+import { Link } from 'react-router'
+import { credits, landingContent } from '../data/landingContent'
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const { brandName, parishName, nav } = landingContent
 
   return (
     <footer className="site-footer">
-      <div className="wrap site-footer__inner">
-        <a className="brand brand--footer" href="#top">
-          <svg className="brand__mark" aria-hidden="true">
-            <use href="#emblem-radiant-cross" />
-          </svg>
-          <span className="brand__word">Acción Católica</span>
-        </a>
-        <nav className="footer-nav">
-          <a href="#quienes-somos">Quiénes somos</a>
-          <a href="#grupos">Grupos</a>
-          <a href="#actividades">Actividades</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-        <p className="footer-fine">
-          © <span id="year">{currentYear}</span> {landingContent.parishName}. Acción Católica.
-        </p>
+      <div className="wrap">
+        <p className="site-footer__word" aria-hidden="true">{brandName}</p>
+        <div className="site-footer__inner">
+          <Link className="brand" to="/">
+            <span>{parishName}</span>
+          </Link>
+          <nav className="footer-nav" aria-label="Pie de página">
+            {nav.map(({ label, short, to }) => (
+              <Link key={to} to={to}>{short ?? label}</Link>
+            ))}
+          </nav>
+          <div className="footer-fine">
+            <p>© {new Date().getFullYear()} {parishName}. {brandName}.</p>
+            <p className="footer-credits">
+              Desarrollado por{' '}
+              {credits.map(({ name, href }, i) => (
+                <span key={href}>
+                  {i > 0 && ' y '}
+                  <a href={href} target="_blank" rel="noopener noreferrer">{name}</a>
+                </span>
+              ))}
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   )
